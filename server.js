@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/monggoHeadlines'
 
 //const routes = require('./routes/');
 
@@ -13,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost/workout_db", {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
